@@ -4,11 +4,13 @@
 package dev.taiji;
 
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        CircularLinkedList<Integer> r = new CircularLinkedList<>();
+        r.add(0, 11);
+        r.add(0, 9);
+        r.add(0, 10);
+        r.add(1, 99);
+        System.out.println(r);
     }
 }
