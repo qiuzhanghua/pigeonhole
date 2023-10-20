@@ -5,12 +5,79 @@ package dev.taiji;
 
 public class App {
 
+    static int[] small = {1, 2, 3, 4, 5, 6, 7, 8};
+    static int[] large = {12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49};
+
+    static int[] holes = {9, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11};
+
+    static long count = 0;
+
     public static void main(String[] args) {
-        CircularLinkedList<Integer> r = new CircularLinkedList<>();
-        r.add(0, 11);
-        r.add(0, 9);
-        r.add(0, 10);
-        r.add(1, 99);
-        System.out.println(r);
+//        System.out.println(small.length);
+//        System.out.println(large.length);
+//        System.out.println(holes.length);
+//        holes[2] = 1;
+//        holes[4] = 2;
+//        holes[6] = 3;
+//        holes[8] = 4;
+//        holes[10] = 5;
+//        holes[12] = 6;
+//        holes[14] = 7;
+//        holes[16] = 8;
+//        permute_large(7);
+        permute_small(8);
+        System.out.println(count * 2);
+    }
+
+    public static void permute_small(int num) {
+        boolean[] used = new boolean[small.length];
+        int[] result = new int[num];
+        int depth = 0;
+        back_tracking_small(result, depth, used);
+    }
+
+    public static void back_tracking_small(int[] result, int depth, boolean[] used) {
+        if (depth == result.length) {
+            permute_large(7);
+//            System.out.println(Arrays.toString(holes));
+            return;
+        }
+        for (int i = 0; i < small.length; i++) {
+            if (!used[i]) {
+                result[depth] = small[i];
+                int index = 2 + depth * 2;
+                holes[index] = small[i];
+                used[i] = true;
+                back_tracking_small(result, depth + 1, used);
+                used[i] = false;
+            }
+        }
+    }
+
+    public static void permute_large(int num) {
+        boolean[] used = new boolean[large.length];
+        int[] result = new int[num];
+        int depth = 0;
+        back_tracking_large(result, depth, used);
+    }
+
+    public static void back_tracking_large(int[] result, int depth, boolean[] used) {
+        if (depth == result.length) {
+            count += 1;
+//            System.out.println(Arrays.toString(result));
+            return;
+        }
+        for (int i = 0; i < large.length; i++) {
+            if (!used[i]) {
+                result[depth] = large[i];
+                int index = 3 + depth * 2;
+                if (holes[index - 1] * large[i] > 99 || holes[index + 1] * large[i] > 99) {
+                    continue;
+                }
+                used[i] = true;
+                back_tracking_large(result, depth + 1, used);
+                used[i] = false;
+            }
+        }
     }
 }
