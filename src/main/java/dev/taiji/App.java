@@ -72,7 +72,7 @@ public class App {
                 result[depth] = large[i];
                 int index = 3 + depth * 2;
                 if (holes[index - 1] * large[i] > 99 || holes[index + 1] * large[i] > 99) {
-                    continue;
+                    break;
                 }
                 used[i] = true;
                 back_tracking_large(result, depth + 1, used);
