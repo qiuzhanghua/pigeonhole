@@ -8,6 +8,7 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     application
+    id("org.graalvm.buildtools.native") version "0.9.28"
 }
 
 repositories {
@@ -40,4 +41,22 @@ application {
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+graalvmNative {
+    binaries {
+        named("main") {
+            imageName.set("pigeonhole")
+            mainClass.set("dev.taiji.App")
+            javaLauncher.set(javaToolchains.launcherFor {
+                languageVersion.set(JavaLanguageVersion.of(17))
+                vendor.set(JvmVendorSpec.matching("Oracle Corporation"))
+            })
+        }
+        named("test") {
+        }
+    }
+    binaries.all {
+        buildArgs.add("--verbose")
+    }
 }

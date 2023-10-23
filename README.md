@@ -14,5 +14,22 @@
 
 2. 但是【1，2，3】、【2，3，1】和【3， 1， 2】是相同的方法，因为他们的旋转后相同。
 
-3. 当然【1, 2, 3】和【4, 5, 6】也不是是相同的方法.
+3. 当然【1, 2, 3】和【4, 5, 6】也不是相同的方法.
 
+## 记录下运行所需的时间
+
+如 30秒， 1分钟， 1小时等
+
+## 环境要求
+1. Java 17(https://www.oracle.com/java/technologies/downloads/#java17)
+2. Gradle 8.4 or above
+
+## 运行
+```bash
+gradle run
+```
+
+## 运行可执行文件
+```bash
+gradle nativeRun
+```
