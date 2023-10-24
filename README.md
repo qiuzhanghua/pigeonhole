@@ -28,8 +28,17 @@
 ```bash
 gradle run
 ```
-
+for my m1x,
+```text
+Time used: 4253 ms
+Result = 171595008
+```
 ## 运行可执行文件
 ```bash
 gradle nativeRun
+```
+for my m1x,
+```text
+Time used: 4352 ms
+Result = 171595008
 ```
