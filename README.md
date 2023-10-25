@@ -20,25 +20,32 @@
 
 如 30秒， 1分钟， 1小时等
 
+
+# **使用Java 21的虚拟线程，进一步缩短运行时间。**
+
 ## 环境要求
-1. Java 17(https://www.oracle.com/java/technologies/downloads/#java17)
-2. Gradle 8.4 or above
+1. Java 21(https://www.oracle.com/java/technologies/downloads/#java21)
+2. Maven 3.9.1 or above
 
 ## 运行
 ```bash
-gradle run
+mvn exec:java -Dexec.mainClass="dev.taiji.App"
 ```
 for my m1x,
 ```text
-Time used: 4253 ms
+Time used: 601 ms
 Result = 171595008
+```
+## 编译可执行文件
+```bash
+mvn package -Pnative
 ```
 ## 运行可执行文件
 ```bash
-gradle nativeRun
+target/pigeonhole
 ```
 for my m1x,
 ```text
-Time used: 4352 ms
+Time used: 755 ms
 Result = 171595008
 ```
