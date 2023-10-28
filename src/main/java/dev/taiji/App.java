@@ -48,9 +48,7 @@ public class App {
             for (Future<Long> future : futures) {
                 count += future.get();
             }
-        } catch (ExecutionException e) {
-            throw new RuntimeException(e);
-        } catch (InterruptedException e) {
+        } catch (ExecutionException | InterruptedException e) {
             throw new RuntimeException(e);
         }
         return count;
@@ -65,7 +63,7 @@ public class App {
         for (int i = 0; i < larges.length; i++) {
             if (!used[i]) {
                 result[depth] = larges[i];
-                int index = 3 + depth * 2;
+                int index = 3 + depth + depth;
                 holes[index] = larges[i];
                 if (holes[index - 1] * larges[i] > 99 || holes[index + 1] * larges[i] > 99) {
                     break;
@@ -96,7 +94,7 @@ public class App {
         for (int i = 0; i < smalls.length; i++) {
             if (!used[i]) {
                 v[depth] = smalls[i];
-                int index = 2 + depth * 2;
+                int index = 2 + depth + depth;
                 holes[index] = smalls[i];
                 used[i] = true;
                 backTrackingSmalls(v, depth + 1, used);
