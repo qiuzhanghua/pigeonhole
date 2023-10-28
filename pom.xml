@@ -91,7 +91,8 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <!-- ... -->
+                            <mainClass>dev.taiji.App</mainClass>
+                            <buildArgs>-H:+ReportExceptionStackTraces</buildArgs>
                         </configuration>
                     </plugin>
                 </plugins>
