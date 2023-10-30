@@ -92,7 +92,7 @@
                         </executions>
                         <configuration>
                             <mainClass>dev.taiji.App</mainClass>
-                            <buildArgs>-H:+ReportExceptionStackTraces</buildArgs>
+                            <buildArgs>-H:+ReportExceptionStackTraces -march=native -R:MaxHeapSize=2048m</buildArgs>
                         </configuration>
                     </plugin>
                 </plugins>
